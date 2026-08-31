@@ -6,31 +6,21 @@ metadata:
   namespace: argocd
 
 spec:
-
   project: default
 
   source:
-
     repoURL: https://github.com/vickybgr787/Argo-CD-Deployment.git
-
     targetRevision: main
-
-    path: app
+    path: order-service/app
 
   destination:
-
     server: https://kubernetes.default.svc
-
     namespace: order-service
 
   syncPolicy:
-
     automated:
-
       prune: true
-
       selfHeal: true
 
     syncOptions:
-
       - CreateNamespace=true
