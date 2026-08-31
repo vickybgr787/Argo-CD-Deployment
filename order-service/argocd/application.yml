@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: order-service
+  namespace: argocd
+
+spec:
+
+  project: default
+
+  source:
+
+    repoURL: https://github.com/vickybgr787/Argo-CD-Deployment.git
+
+    targetRevision: main
+
+    path: app
+
+  destination:
+
+    server: https://kubernetes.default.svc
+
+    namespace: order-service
+
+  syncPolicy:
+
+    automated:
+
+      prune: true
+
+      selfHeal: true
+
+    syncOptions:
+
+      - CreateNamespace=true
